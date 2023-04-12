@@ -1,10 +1,7 @@
 export default function validation(string) {
-  const validRules = [/[^\w-]+/, /^[^a-z]/i, /[^a-z]$/i, /\d{4,}/];
-  let resValidation = true;
-  validRules.forEach((rule) => {
-    if (rule.test(string)) {
-      resValidation = false;
-    }
-  });
-  return resValidation;
+  const checkAllCorrectSymbols = /[\w-]+/i.test(string);
+  const checkFirstSymbol = /^[a-z]/i.test(string);
+  const checkLastSymbol = /[a-z]$/i.test(string);
+  const checkTreeNumbersInRow = !/\d{4,}/.test(string);
+  return checkAllCorrectSymbols && checkFirstSymbol && checkLastSymbol && checkTreeNumbersInRow;
 }
